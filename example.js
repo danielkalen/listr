@@ -60,7 +60,7 @@ const tasks = new Listr([
 			throw new Error('Package name already exists');
 		})
 	}
-]);
+], {concurrent:true});
 
 tasks.run().catch(err => {
 	console.error(err.message);

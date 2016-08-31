@@ -1,7 +1,7 @@
 {
-  "name": "listr",
+  "name": "@danielkalen/listr",
   "version": "0.5.0",
-  "description": "Terminal task list",
+  "description": "Terminal task list (modified to not stop list upon errors when concurrent:true)",
   "license": "MIT",
   "repository": "SamVerschueren/listr",
   "author": {
@@ -50,11 +50,8 @@
     "strip-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "ava": "*",
-    "clinton": "*",
-    "delay": "^1.3.1",
     "rxjs": "^5.0.0-beta.9",
-    "xo": "*"
+    "delay": "^1.3.1"
   },
   "xo": {
     "esnext": true

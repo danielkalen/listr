@@ -53,7 +53,9 @@ class Listr {
 
 		let tasks;
 		if (this._options.concurrent === true) {
-			tasks = Promise.all(this._tasks.map(task => task.run()));
+			tasks = Promise.all(this._tasks.map((task)=> {
+				return new Promise(function(resolve){task.run().then(resolve, resolve)})
+			}));
 		} else {
 			tasks = this._tasks.reduce((promise, task) => promise.then(() => task.run()), Promise.resolve());
 		}
@@ -63,7 +65,7 @@ class Listr {
 				this._renderer.end();
 			})
 			.catch(err => {
-				if (this.level === 0) {
+				if (this.level === 0 && !this.concurrent) {
 					this._renderer.end();
 				}
 				throw err;
